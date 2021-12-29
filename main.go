@@ -9,10 +9,6 @@ import (
 	"github.com/gocolly/colly"
 )
 
-type EntryJson struct {
-	Entries	[]Entry
-}
-
 type Entry struct {
 	Name		string
 	Category	string
@@ -76,7 +72,5 @@ func main() {
 
 	ioutil.WriteFile("./output.json", entriesJson, 0777)
 	fmt.Println("Data saved")
-
-
 
 }
