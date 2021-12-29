@@ -17,8 +17,7 @@ func main() {
 	args := os.Args[1:]
 	
 	if len(args) == 1 {
-		
-		switch args[1] {
+		switch args[0] {
 			case "scrape":
 				action_scrape()
 			case "plot":
@@ -34,14 +33,10 @@ func main() {
 }
 
 func action_scrape() {
-
-	os.Exit(22)
-	
 	url := "https://www.programmableweb.com/category/all/mashups?order=created&page="
-	page := 2
+	pages := 2
 	
-	scrape(url, pages)
-	
+	scrapeProgrammableWeb(url, pages)	
 }
 
 func action_plot() {
