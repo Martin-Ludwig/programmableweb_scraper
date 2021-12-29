@@ -6,14 +6,12 @@ import (
 )
 
 type Entry struct {
-	Name		string
-	Category	string
-	Submitted	string
+	Name		string	`json:"Name"`
+	Category	string	`json:"Category"`
+	Submitted	string	`json:"Submitted"`
 }
 
 func main() {
-	argsWithProg := os.Args[1:]
-	fmt.Println(len(argsWithProg))
 	args := os.Args[1:]
 	
 	if len(args) == 1 {
@@ -23,22 +21,24 @@ func main() {
 			case "plot":
 				action_plot()
 		}
-
 	} else {
 		os.Exit(1)
 	}
-		
-	os.Exit(99)
-	
 }
 
 func action_scrape() {
 	url := "https://www.programmableweb.com/category/all/mashups?order=created&page="
 	pages := 2
 	
+	fmt.Println("Scrapign data from https://www.programmableweb.com/category/all/mashups")
 	scrapeProgrammableWeb(url, pages)	
+	fmt.Println("Finished")
 }
 
 func action_plot() {
-	
+	file := "./mashups.json"
+
+	fmt.Println("Plotting... ")
+	plotEntriesFromJson(file)
+	fmt.Println("Finished")
 }
